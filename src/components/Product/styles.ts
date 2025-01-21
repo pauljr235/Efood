@@ -10,7 +10,7 @@ export const Card = styled.div`
   background-color: #fff;
   img {
     width: 100%;
-    height: 314px;
+    height: 217px;
     object-fit: cover;
   }
 
