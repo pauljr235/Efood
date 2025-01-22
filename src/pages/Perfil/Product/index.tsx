@@ -19,14 +19,15 @@ type ProductProps = {
   title: string
   description: string
   image: string
+  price: number
 }
 
-const Product = ({ title, description, image }: ProductProps) => {
+const Product = ({ title, description, image, price }: ProductProps) => {
   const [modalAberto, setModalAberto] = useState(false)
   const [carrinho, setCarrinho] = useState<ProductProps[]>([]) // Estado do carrinho
 
   const adicionarAoCarrinho = () => {
-    const produto = { title, description, image }
+    const produto = { title, description, image, price }
     setCarrinho([...carrinho, produto]) // Adiciona o produto ao carrinho
     alert(`O produto "${title}" foi adicionado ao carrinho!`)
     setModalAberto(false) // Fecha o modal após adicionar
@@ -54,22 +55,9 @@ const Product = ({ title, description, image }: ProductProps) => {
           </Imagem>
           <ModalContent>
             <h4>Pizza Marguerita</h4>
-            <p>
-              A pizza Margherita é uma pizza clássica da culinária italiana,
-              reconhecida por sua simplicidade e sabor inigualável. Ela é feita
-              com uma base de massa fina e crocante, coberta com molho de tomate
-              fresco, queijo mussarela de alta qualidade, manjericão fresco e
-              azeite de oliva extra-virgem. A combinação de sabores é perfeita,
-              com o molho de tomate suculento e ligeiramente ácido, o queijo
-              derretido e cremoso e as folhas de manjericão frescas, que
-              adicionam um toque de sabor herbáceo. É uma pizza simples, mas
-              deliciosa, que agrada a todos os paladares e é uma ótima opção
-              para qualquer ocasião. <br />
-              <br />
-              Serve: de 2 a 3 pessoas
-            </p>
+            <p>{description}</p>
             <ModalButton onClick={adicionarAoCarrinho}>
-              Adicionar ao carrinho - R$ 60,90
+              Adicionar ao carrinho - {price}
             </ModalButton>
             <div className="overlay"></div>
           </ModalContent>

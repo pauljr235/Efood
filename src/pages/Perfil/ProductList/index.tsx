@@ -1,53 +1,26 @@
 import Product from '../Product'
 import { List } from './styles'
 import pizza from '../../../assets/images/pizza.png'
+import { Cardapio } from '..'
 
-const ProductList = () => {
+export type Props = {
+  title: string
+  cardapios: Cardapio[]
+}
+
+const ProductList = ({ title, cardapios }: Props) => {
   return (
     <>
       <List className="container">
-        <Product
-          title="Pizza Marguerita"
-          description={
-            'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-          }
-          image={pizza}
-        />
-        <Product
-          title="Pizza Marguerita"
-          description={
-            'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-          }
-          image={pizza}
-        />
-        <Product
-          title="Pizza Marguerita"
-          description={
-            'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-          }
-          image={pizza}
-        />
-        <Product
-          title="Pizza Marguerita"
-          description={
-            'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-          }
-          image={pizza}
-        />
-        <Product
-          title="Pizza Marguerita"
-          description={
-            'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-          }
-          image={pizza}
-        />
-        <Product
-          title="Pizza Marguerita"
-          description={
-            'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!'
-          }
-          image={pizza}
-        />
+        {cardapios.map((cardapio) => (
+          <Product
+            key={cardapio.id}
+            image={cardapio.capa}
+            description={cardapio.descricao}
+            title={cardapio.titulo}
+            price={cardapio.preco}
+          />
+        ))}
       </List>
     </>
   )
