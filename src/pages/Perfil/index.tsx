@@ -3,44 +3,49 @@ import Header from './Header'
 import Hero2 from './Hero2'
 import ProductList from './ProductList'
 
+export type CardapioItem = {
+  id: number
+  nome: string
+  descricao: string
+  foto: string
+  preco: number
+  porcao: string
+}
+
 export type Cardapio = {
-  title: string
-  infos: string
-  destaque: string
-  description: string
-  rating: string
-  media: any
   id: number
   titulo: string
-  destacado: boolean
-  tipo: string
-  preco: number
-  avaliacao: string
   descricao: string
   capa: string
-  cardapio: {
-    foto: string
-    preco: number
-    id: number
-    nome: string
-    descricao: string
-    porcao: string
-  }
+  tipo: string
+  avaliacao: string
+  destacado: boolean
+  cardapio: CardapioItem[]
 }
 
 const Perfil = () => {
-  const [cardaps, setCardaps] = useState<Cardapio[]>([])
+  const [cardapios, setCardapios] = useState<Cardapio[]>([])
 
   useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/efood/bella_tavola_italiana//1.webp')
+    fetch('https://fake-api-tau.vercel.app/efood')
       .then((res) => res.json())
-      .then((res) => setCardaps(res))
+      .then((res) => setCardapios(res))
+
+    fetch('https://fake-api-tau.vercel.app/efood')
+      .then((res) => res.json())
+      .then((res) => setCardapios(res))
   }, [])
   return (
     <>
       <Header cartCount={0} />
       <Hero2 />
-      <ProductList cardapios={cardaps} title={''} />
+      {cardapios.map((cardapio) => (
+        <ProductList
+          key={cardapio.id}
+          title={cardapio.titulo}
+          cardapios={cardapio.cardapio}
+        />
+      ))}
     </>
   )
 }

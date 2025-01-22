@@ -1,24 +1,33 @@
 import Product from '../Product'
 import { List } from './styles'
-import pizza from '../../../assets/images/pizza.png'
-import { Cardapio } from '..'
+
+export type CardapioItem = {
+  id: number
+  nome: string
+  descricao: string
+  foto: string
+  preco: number
+  porcao: string
+}
 
 export type Props = {
   title: string
-  cardapios: Cardapio[]
+  cardapios: CardapioItem[]
 }
 
 const ProductList = ({ title, cardapios }: Props) => {
   return (
     <>
+      <h2>{title}</h2>
       <List className="container">
         {cardapios.map((cardapio) => (
           <Product
             key={cardapio.id}
-            image={cardapio.capa}
+            title={cardapio.nome}
             description={cardapio.descricao}
-            title={cardapio.titulo}
+            image={cardapio.foto}
             price={cardapio.preco}
+            portion={cardapio.porcao}
           />
         ))}
       </List>

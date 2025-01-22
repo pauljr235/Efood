@@ -12,22 +12,28 @@ import {
   Titulo
 } from './styles'
 
-import pizza from '../../../assets/images/pizza.png'
 import fechar from '../../../assets/images/close 1.png'
 
-type ProductProps = {
+export type ProductProps = {
   title: string
   description: string
   image: string
   price: number
+  portion: string
 }
 
-const Product = ({ title, description, image, price }: ProductProps) => {
+const Product = ({
+  title,
+  description,
+  image,
+  price,
+  portion
+}: ProductProps) => {
   const [modalAberto, setModalAberto] = useState(false)
   const [carrinho, setCarrinho] = useState<ProductProps[]>([]) // Estado do carrinho
 
   const adicionarAoCarrinho = () => {
-    const produto = { title, description, image, price }
+    const produto = { title, description, image, price, portion }
     setCarrinho([...carrinho, produto]) // Adiciona o produto ao carrinho
     alert(`O produto "${title}" foi adicionado ao carrinho!`)
     setModalAberto(false) // Fecha o modal após adicionar
@@ -41,6 +47,7 @@ const Product = ({ title, description, image, price }: ProductProps) => {
         <Descricao>{description}</Descricao>
         <Button onClick={() => setModalAberto(true)}>Mais detalhes</Button>
       </Card>
+
       <Modal className={modalAberto ? 'visivel' : ''}>
         <Container>
           <header>
@@ -51,11 +58,12 @@ const Product = ({ title, description, image, price }: ProductProps) => {
             />
           </header>
           <Imagem>
-            <img src={pizza} alt="Imagem pizza" />
+            <img src={image} alt={title} />
           </Imagem>
           <ModalContent>
-            <h4>Pizza Marguerita</h4>
-            <p>{description}</p>
+            <h4>{title}</h4>
+            <p>PREÇO: {description}</p>
+            <p>PORÇÃO: {portion}</p>
             <ModalButton onClick={adicionarAoCarrinho}>
               Adicionar ao carrinho - {price}
             </ModalButton>

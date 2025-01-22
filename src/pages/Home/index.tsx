@@ -3,12 +3,6 @@ import Header from '../../components/Header'
 import { useEffect, useState } from 'react'
 
 export type Restaurant = {
-  title: string
-  infos: string
-  destaque: string
-  description: string
-  rating: string
-  media: any
   id: number
   titulo: string
   destacado: boolean
@@ -16,14 +10,16 @@ export type Restaurant = {
   avaliacao: string
   descricao: string
   capa: string
-  cardapio: {
-    foto: string
-    preco: number
-    id: number
-    nome: string
-    descricao: string
-    porcao: string
-  }
+  cardapio: [
+    {
+      foto: string
+      preco: number
+      id: number
+      nome: string
+      descricao: string
+      porcao: string
+    }
+  ]
 }
 
 const Home = () => {
