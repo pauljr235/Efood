@@ -20,6 +20,7 @@ export type ProductProps = {
   image: string
   price: number
   portion: string
+  id: number
 }
 
 const Product = ({
@@ -27,13 +28,14 @@ const Product = ({
   description,
   image,
   price,
-  portion
+  portion,
+  id
 }: ProductProps) => {
   const [modalAberto, setModalAberto] = useState(false)
   const [carrinho, setCarrinho] = useState<ProductProps[]>([]) // Estado do carrinho
 
   const adicionarAoCarrinho = () => {
-    const produto = { title, description, image, price, portion }
+    const produto = { title, description, image, price, portion, id }
     setCarrinho([...carrinho, produto]) // Adiciona o produto ao carrinho
     alert(`O produto "${title}" foi adicionado ao carrinho!`)
     setModalAberto(false) // Fecha o modal após adicionar

@@ -14,6 +14,7 @@ import {
 } from './styles'
 
 type Props = {
+  id: number
   image: string
   title: string
   rating: string
@@ -25,6 +26,7 @@ type Props = {
 
 const Product = ({
   image,
+  id,
   title,
   rating,
   description,
@@ -54,7 +56,7 @@ const Product = ({
           </Rating>
         </HeaderCard>
         <Descricao>{getDescricao(description)}</Descricao>
-        <Link to="/perfil">
+        <Link to={`/perfil/${id}`}>
           <BotaoContainer type="button" title="Saiba mais">
             Saiba mais
           </BotaoContainer>

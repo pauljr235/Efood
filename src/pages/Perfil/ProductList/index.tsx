@@ -28,6 +28,7 @@ const ProductList = ({ title, cardapios }: Props) => {
             image={cardapio.foto}
             price={cardapio.preco}
             portion={cardapio.porcao}
+            id={0}
           />
         ))}
       </List>

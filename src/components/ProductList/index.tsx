@@ -20,6 +20,7 @@ const ProductList = ({ restaurants }: Props) => {
             description={restaurant.descricao}
             infos={restaurant.tipo}
             title={restaurant.titulo}
+            id={restaurant.id}
           />
         ))}
       </List>

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Header from './Header'
 import Hero2 from './Hero2'
 import ProductList from './ProductList'
+import { useParams } from 'react-router-dom'
 
 export type CardapioItem = {
   id: number
@@ -24,17 +25,17 @@ export type Cardapio = {
 }
 
 const Perfil = () => {
+  const { id } = useParams<{ id: string }>()
   const [cardapios, setCardapios] = useState<Cardapio[]>([])
 
   useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/efood')
+    fetch(`https://fake-api-tau.vercel.app/efood/restaurantes`)
       .then((res) => res.json())
-      .then((res) => setCardapios(res))
-
-    fetch('https://fake-api-tau.vercel.app/efood')
-      .then((res) => res.json())
-      .then((res) => setCardapios(res))
-  }, [])
+      .then((res) => {
+        const restaurante = res.find((r: Cardapio) => r.id === Number(id))
+        setCardapios(restaurante ? [restaurante] : [])
+      })
+  }, [id])
   return (
     <>
       <Header cartCount={0} />
