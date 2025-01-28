@@ -1,52 +1,42 @@
-import { useEffect, useState } from 'react'
-import Header from './Header'
-import Hero2 from './Hero2'
-import ProductList from './ProductList'
 import { useParams } from 'react-router-dom'
+import DishesList from '../../components/DishesList'
+import HeaderPerfil from '../../components/HeaderPerfil'
 
-export type CardapioItem = {
-  id: number
-  nome: string
-  descricao: string
-  foto: string
-  preco: number
-  porcao: string
-}
+import Banner from '../../components/Banner'
+import { useGetDishQuery } from '../../services/api'
+import Cart from '../../components/Cart'
 
-export type Cardapio = {
-  id: number
-  titulo: string
-  descricao: string
-  capa: string
-  tipo: string
-  avaliacao: string
-  destacado: boolean
-  cardapio: CardapioItem[]
-}
+// export type Props = {
+//   restaurants: Restaurante[]
+// }
 
 const Perfil = () => {
-  const { id } = useParams<{ id: string }>()
-  const [cardapios, setCardapios] = useState<Cardapio[]>([])
+  const { id } = useParams()
+  const { data: restaurante } = useGetDishQuery(id!)
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/efood/restaurantes`)
-      .then((res) => res.json())
-      .then((res) => {
-        const restaurante = res.find((r: Cardapio) => r.id === Number(id))
-        setCardapios(restaurante ? [restaurante] : [])
-      })
-  }, [id])
+  // const [restaurante, setRestaurante] = useState<Restaurante | null>(null)
+
+  // useEffect(() => {
+  //   fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+  //     .then((res) => res.json())
+  //     .then((res) => setRestaurante(res))
+  //     .catch((err) => console.error('Erro ao carregar cardápio:', err))
+  // }, [id])
+
+  if (!restaurante) {
+    return <p>Carregando...</p>
+  }
+
   return (
     <>
-      <Header cartCount={0} />
-      <Hero2 />
-      {cardapios.map((cardapio) => (
-        <ProductList
-          key={cardapio.id}
-          title={cardapio.titulo}
-          cardapios={cardapio.cardapio}
-        />
-      ))}
+      <HeaderPerfil />
+      <Banner
+        capa={restaurante.capa}
+        title={restaurante.titulo}
+        tipo={restaurante.tipo}
+      />
+      <DishesList restaurants={[restaurante]} />
+      <Cart />
     </>
   )
 }

@@ -4,10 +4,9 @@ import { cores } from '../../styles'
 import { Props } from '.'
 
 export const TagContainer = styled.div<Props>`
-  background-color: ${cores.darkPink};
-  color: ${cores.whitePink};
-  font-weight: bold;
+  background-color: ${cores.rosa_escuro};
+  color: ${cores.rosa_claro};
   font-size: 12px;
+  font-weight: 700;
   padding: 6px 4px;
-  display: inline-block;
 `

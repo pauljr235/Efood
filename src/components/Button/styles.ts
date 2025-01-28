@@ -1,13 +1,17 @@
-import { styled } from 'styled-components'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+
 import { cores } from '../../styles'
 
-export const BotaoContainer = styled.button`
+export const Botao = styled(Link)`
+  background-color: ${cores.rosa_escuro};
+  color: ${cores.rosa_claro};
+  font-size: 14px;
+  font-weight: 700;
   padding: 4px 6px;
-  background-color: ${cores.darkPink};
-  color: ${cores.whitePink};
+  text-align: center;
+  margin: 8px;
   border: none;
-  margin-left: 8px;
-  font-weight: bold;
-  position: absolute;
-  top: 365px;
+  cursor: pointer;
+  text-decoration: none;
 `

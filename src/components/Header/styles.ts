@@ -1,23 +1,29 @@
-import { styled } from 'styled-components'
+import styled from 'styled-components'
 import { cores } from '../../styles'
 
-export const Imagem = styled.div`
+export const Vector = styled.header`
   width: 100%;
-  height: 384px;
-`
-export const Logo = styled.img`
-  position: absolute;
-  top: 0;
-  padding-top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  height: auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
-export const Titulo = styled.h1`
+export const Nome = styled.h1`
+  color: ${cores.rosa_escuro};
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 42px;
+  align-items: center;
+  margin-left: 350px;
+  margin-right: 350px;
   text-align: center;
-  position: absolute;
-  top: 270px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: ${cores.darkPink};
+`
+
+export const Logo = styled.img`
+  width: 125px;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 140px;
 `

@@ -1,32 +1,32 @@
-import logo from '../../assets/images/logo.png'
-import {
-  Descricao,
-  FooterContainer,
-  FooterImg,
-  SocialLink,
-  SocialLinks
-} from './styles'
+import { Container, Descricao, Link, Links, Logo } from './styles'
+
+import logoImage from '../../assets/images/logo.png'
+import Face from '../../assets/images/facebook.png'
+import Insta from '../../assets/images/instagram.png'
+import Twitter from '../../assets/images/twitter.png'
 
 const Footer = () => (
-  <FooterContainer>
-    <FooterImg src={logo} alt="Logo E-food" />
-    <SocialLinks>
-      <a href="#">
-        <SocialLink className="bi bi-instagram"></SocialLink>
-      </a>
-      <a href="#">
-        <SocialLink className="bi bi-facebook"></SocialLink>
-      </a>
-      <a href="#">
-        <SocialLink className="bi bi-twitter"></SocialLink>
-      </a>
-    </SocialLinks>
+  <Container>
+    <Logo src={logoImage} alt="efood" />
+    <div>
+      <Links>
+        <Link href="">
+          <img src={Face} alt="facebook" />
+        </Link>
+        <Link href="">
+          <img src={Insta} alt="instagram" />
+        </Link>
+        <Link href="">
+          <img src={Twitter} alt="twitter" />
+        </Link>
+      </Links>
+    </div>
     <Descricao>
       A efood é uma plataforma para divulgação de estabelecimentos, a
       responsabilidade pela entrega, qualidade dos produtos é toda do
-      estabelecimento contratado.
+      estabelecimento contratado.{' '}
     </Descricao>
-  </FooterContainer>
+  </Container>
 )
 
 export default Footer

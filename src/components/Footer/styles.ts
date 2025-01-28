@@ -1,39 +1,35 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
-export const FooterContainer = styled.div`
-  height: 298px;
-  background-color: ${cores.lightPink};
-  position: relative;
+export const Container = styled.footer`
+  background-color: ${cores.rosa_claro};
+  padding: 40px 444px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 120px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: none;
+  }
 `
 
-export const FooterImg = styled.img`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  padding-top: 40px;
+export const Logo = styled.img`
+  margin-bottom: 32.5px;
 `
 
-export const SocialLinks = styled.div`
-  position: absolute;
-  top: 130px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: ${cores.darkPink};
+export const Links = styled.ul`
+  display: flex;
+  margin-bottom: 80px;
 `
 
-export const SocialLink = styled.i`
-  color: ${cores.darkPink};
-  font-size: 24px;
-  padding: 8px;
-  border-radius: 20px;
+export const Link = styled.a`
+  margin-right: 8px;
 `
 
 export const Descricao = styled.p`
-  position: absolute;
-  top: 235px;
-  left: 50%;
-  transform: translateX(-50%);
+  color: ${cores.rosa_escuro};
+  font-weight: 400;
+  font-size: 10px;
   text-align: center;
-  color: ${cores.darkPink};
 `

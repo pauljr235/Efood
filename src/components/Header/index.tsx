@@ -1,20 +1,12 @@
-import { Link } from 'react-router-dom'
-import { Imagem, Logo, Titulo } from './styles'
-import headerImg from '../../assets/images/fundo.png'
-import logo from '../../assets/images/logo.png'
+import logoImage from '../../assets/images/logo.png'
+import { Logo, Nome, Vector } from './styles'
+import vectorImg from '../../assets/images/vector_home.png'
 
 const Header = () => (
-  <>
-    <Imagem style={{ backgroundImage: `url(${headerImg})` }}></Imagem>
-    <div>
-      <Link to="./">
-        <Logo src={logo} alt="logo e-food"></Logo>
-      </Link>
-      <Titulo>
-        Viva experiências gastronômicas <br /> no conforto de sua casa.
-      </Titulo>
-    </div>
-  </>
+  <Vector style={{ backgroundImage: `url(${vectorImg})` }}>
+    <Logo src={logoImage} alt="logo da marca" />
+    <Nome>Viva experiências gastronômicas no conforto da sua casa</Nome>
+  </Vector>
 )
 
 export default Header
